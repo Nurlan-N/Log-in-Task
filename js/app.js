@@ -14,7 +14,7 @@ function Check() {
     var semail = document.querySelector('.semail');
     var spass = document.querySelector('.spass');
     var pass_check  = /^[a-zA-Z0-9!@#$%^&*.]{6,16}$/;
-    var name_check = /^[A-Z][a-z]{5,19}$/;
+    var name_check = /^[A-Z][a-z0-9]{5,19}$/;
     var email_check =  /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/;
 
     if (!name_check.test(name_value)) {
@@ -23,12 +23,14 @@ function Check() {
         return false;
     }
     else {
+        name_info.style.display = "none";
         if (!email_check.test(email_value)) {
             email.style.border = "red solid 2px";
             email_info.style.display = "block";
             return false;
         }
         else{
+            email_info.style.display = "none";
             if (!pass_check.test(pass_value)) {
                 pass.style.border = "red solid 2px";
                 pass_info.style.display = "block";
@@ -42,8 +44,6 @@ function Check() {
             for (const y of r_2) {
                 y.style.display = "block"
             }
-            name_info.style.display = "none";
-            email_info.style.display = "none";
             pass_info.style.display = "none";
             sname.innerHTML = "User Name : " + name_value;
             semail.innerHTML ="Email :" + email_value;
